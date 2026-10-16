@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Google Search Console XML Sitemap
+Sitemap: https://f0undr-order.vercel.app/sitemap.xml

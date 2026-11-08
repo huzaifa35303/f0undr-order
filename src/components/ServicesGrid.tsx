@@ -51,7 +51,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
     <section id="services" className="py-20 bg-stone-950/60 border-t border-stone-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
@@ -64,7 +63,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
             Choose from 8 specialized engineering and creative disciplines. Every engagement includes senior-fellow architecture, strict NDAs, and full intellectual property transfer.
           </p>
 
-          {/* 1-Click Currency Switcher (Dollars, Pounds, PKR) */}
           {onCurrencyChange && (
             <div className="inline-flex items-center gap-1.5 p-1 rounded-xl bg-stone-900 border border-stone-800 text-xs font-mono">
               <span className="text-stone-500 px-2">Currency:</span>
@@ -86,18 +84,15 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
           )}
         </div>
 
-        {/* 8-Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SERVICES_DATA.map((service) => (
             <div
               key={service.id}
               className="glass-card rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden"
             >
-              {/* Top Accent Line on Hover */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div>
-                {/* Header: Icon & Badge */}
                 <div className="flex items-start justify-between gap-2 mb-4">
                   <div className="p-3 rounded-xl bg-stone-900 border border-stone-800 group-hover:border-stone-700 transition-colors">
                     {getServiceIcon(service.iconName)}
@@ -107,7 +102,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
                   </span>
                 </div>
 
-                {/* Title & Price */}
                 <h3 className="font-serif font-bold text-xl text-white mb-1 group-hover:text-orange-400 transition-colors">
                   {service.title}
                 </h3>
@@ -124,7 +118,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
                   {service.shortDescription}
                 </p>
 
-                {/* Deliverables snippet */}
                 <div className="space-y-1.5 mb-5 border-t border-stone-800/80 pt-4">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500 block mb-1">
                     What's Included:
@@ -142,7 +135,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
                   )}
                 </div>
 
-                {/* Tech Stack Pills */}
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {service.techStack.slice(0, 4).map((tech, idx) => (
                     <span
@@ -155,7 +147,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="space-y-2 pt-2 border-t border-stone-800/60">
                 <button
                   onClick={() => onSelectServiceToOrder(service.id)}
@@ -180,12 +171,10 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
 
       </div>
 
-      {/* Detail Specs & Sample Works Modal */}
       {selectedServiceForModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
           <div className="bg-stone-900 border border-stone-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
             
-            {/* Close Button */}
             <button
               onClick={() => setSelectedServiceForModal(null)}
               className="absolute top-4 right-4 p-2 rounded-lg bg-stone-800 text-stone-400 hover:text-white transition-colors"
@@ -193,7 +182,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Header */}
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-stone-800 border border-stone-700">
                 {getServiceIcon(selectedServiceForModal.iconName)}
@@ -212,7 +200,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
               {selectedServiceForModal.fullDescription}
             </p>
 
-            {/* All Deliverables */}
             <div className="mb-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-stone-400 mb-2">
                 Guaranteed Deliverables:
@@ -227,7 +214,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
               </div>
             </div>
 
-            {/* Popular Add-on Features */}
             <div className="mb-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-stone-400 mb-2">
                 Available Custom Architecture Modules:
@@ -254,7 +240,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
               </div>
             </div>
 
-            {/* Sample Works */}
             <div className="mb-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-stone-400 mb-2">
                 Previous Atelier Prototypes &amp; Deployments:
@@ -276,7 +261,6 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
               </div>
             </div>
 
-            {/* Modal Footer CTA */}
             <div className="pt-4 border-t border-stone-800 flex items-center justify-between gap-4">
               <div>
                 <span className="text-xs text-stone-400 block">Baseline starting at</span>

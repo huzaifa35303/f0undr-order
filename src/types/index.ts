@@ -61,8 +61,6 @@ export interface ClientInfo {
   preferredContactMethod: 'whatsapp' | 'discord' | 'call';
 }
 
-
-
 export interface OrderMilestone {
   id: string;
   title: string;
@@ -72,7 +70,7 @@ export interface OrderMilestone {
 }
 
 export interface Order {
-  id: string; // e.g. F0-2026-9281
+  id: string;
   createdAt: string;
   updatedAt: string;
   serviceId: ServiceId;
@@ -81,10 +79,10 @@ export interface Order {
   urgency: TimelineUrgency;
   projectTitle: string;
   projectDescription: string;
-  selectedFeatures: string[]; // list of feature IDs
+  selectedFeatures: string[];
   additionalAddons?: string[];
   techStackPreference?: string;
-  referenceLinks?: string[]; // Figma, Github, Drive, etc.
+  referenceLinks?: string[];
   targetBudgetUsd: number;
   currency?: Currency;
   paymentMethod?: PaymentMethod;
@@ -93,14 +91,14 @@ export interface Order {
   status: OrderStatus;
   milestones: OrderMilestone[];
   internalNotes?: string;
-  assignedLead?: string; // e.g. 'M.Huzaifa', 'Abdull Rehman Khizar', etc.
+  assignedLead?: string;
   source?: 'wizard' | 'express_brief' | 'manual_admin';
 }
 
 export interface CurrencyConfig {
   code: Currency;
   symbol: string;
-  rateAgainstUsd: number; // 1 USD = rate
+  rateAgainstUsd: number;
   name: string;
   shortLabel: string;
 }

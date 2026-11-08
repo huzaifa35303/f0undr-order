@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { 
   Zap, 
   CheckCircle2, 
-  MessageCircle,
-  Phone,
-  MessageSquare,
-  Copy,
-  Check
+  MessageCircle, 
+  Phone, 
+  MessageSquare, 
+  Copy, 
+  Check 
 } from 'lucide-react';
 import type { Currency, Order, ServiceId } from '../types';
 
@@ -44,7 +44,6 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
     const orderId = generateOrderId();
     const currentCat = SERVICES_DATA.find((s) => s.id === selectedService) || SERVICES_DATA[0];
 
-    // Rough target budget parse
     let parsedBudget = 800;
     if (budgetRange.includes('3,000') || budgetRange.includes('5,000')) parsedBudget = 3500;
     else if (budgetRange.includes('1,500')) parsedBudget = 1200;
@@ -90,10 +89,8 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="glass-panel rounded-3xl p-6 sm:p-10 border border-amber-500/30 relative overflow-hidden shadow-2xl">
-          {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 blur-[90px] pointer-events-none rounded-full" />
 
-          {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-stone-800">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-mono uppercase tracking-wider mb-2">
@@ -174,7 +171,6 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
-                {/* Domain Selector */}
                 <div>
                   <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-1.5">
                     Service Required:
@@ -192,7 +188,6 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
                   </select>
                 </div>
 
-                {/* Budget Range */}
                 <div>
                   <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-1.5">
                     Estimated Budget Tier:
@@ -211,7 +206,6 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
 
               </div>
 
-              {/* Brief textarea */}
               <div>
                 <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-1.5">
                   What are you looking to build? (1–3 sentences):
@@ -226,7 +220,6 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
                 />
               </div>
 
-              {/* Client Name & Contact */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-1.5">
@@ -258,7 +251,6 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
 
               </div>
 
-              {/* Submit CTA */}
               <div className="pt-2">
                 <button
                   type="submit"

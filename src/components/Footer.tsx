@@ -24,7 +24,6 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-stone-800/80">
           
-          {/* Brand Manifesto */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-stone-900 border border-stone-700 flex items-center justify-center text-white font-serif font-bold text-lg">
@@ -49,7 +48,6 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Quick Domain Links */}
           <div className="md:col-span-4 space-y-3">
             <h5 className="text-xs font-mono uppercase text-stone-200 font-semibold tracking-wider">
               Commission Domains
@@ -82,7 +80,6 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Direct Comms & Cockpit */}
           <div className="md:col-span-3 space-y-3">
             <h5 className="text-xs font-mono uppercase text-stone-200 font-semibold tracking-wider">
               Studio Folio
@@ -131,7 +128,6 @@ export const Footer: React.FC<FooterProps> = ({
 
         </div>
 
-        {/* Currencies & Payment Gateways Bar */}
         <div className="py-6 border-b border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div className="flex flex-wrap items-center gap-2 text-stone-400">
             <span className="text-orange-400 font-semibold">Global Currencies:</span>
@@ -154,7 +150,6 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* Bottom Credits */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-stone-500">
           <p>© 2026 f0undr Atelier. Crafted with engineering rigor for founders &amp; enterprises.</p>
           <div className="flex items-center gap-3">

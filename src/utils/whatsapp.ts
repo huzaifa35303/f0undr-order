@@ -51,7 +51,6 @@ export function formatOrderForWhatsApp(order: Order): string {
 }
 
 export function createWhatsAppUrl(phoneNumber: string, order: Order): string {
-  // Strip non-digits except leading +
   const cleanPhone = phoneNumber.replace(/[^0-9]/g, '');
   const message = formatOrderForWhatsApp(order);
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;

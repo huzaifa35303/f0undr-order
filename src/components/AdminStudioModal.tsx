@@ -42,14 +42,12 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
   const [enteredPin, setEnteredPin] = useState('');
   const [pinError, setPinError] = useState(false);
 
-  // Data state
   const [orders, setOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [activeTab, setActiveTab] = useState<'orders' | 'settings'>('orders');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Settings state
   const [adminSettings, setLocalSettings] = useState<AdminSettings>(getAdminSettings());
   const [savedSettingsSuccess, setSavedSettingsSuccess] = useState(false);
 
@@ -122,12 +120,10 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
     dlAnchor.click();
   };
 
-  // Metrics
   const totalRevenue = orders.reduce((acc, o) => acc + o.targetBudgetUsd, 0);
   const activeCount = orders.filter((o) => o.status === 'in_development' || o.status === 'under_review' || o.status === 'qa_testing').length;
   const completedCount = orders.filter((o) => o.status === 'delivered').length;
 
-  // Filtered orders
   const filteredOrders = orders.filter((o) => {
     const matchesStatus = statusFilter === 'all' || o.status === statusFilter;
     const q = searchTerm.toLowerCase();
@@ -138,14 +134,12 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
       (o.client.discord ? o.client.discord.toLowerCase().includes(q) : false) ||
       (o.client.phoneOrWhatsapp ? o.client.phoneOrWhatsapp.toLowerCase().includes(q) : false);
     return matchesStatus && matchesSearch;
-
   });
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md overflow-y-auto">
       <div className="bg-stone-900 border border-stone-800 rounded-3xl max-w-5xl w-full max-h-[94vh] flex flex-col relative shadow-2xl overflow-hidden my-auto">
         
-        {/* Header */}
         <div className="px-6 py-4 border-b border-stone-800 bg-stone-950 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-orange-600/20 border border-orange-500/30 flex items-center justify-center text-orange-400">
@@ -172,7 +166,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
           </button>
         </div>
 
-        {/* PIN Authentication Screen */}
         {!isAuthenticated ? (
           <div className="p-8 sm:p-14 text-center max-w-md mx-auto my-auto space-y-6">
             <div className="w-14 h-14 rounded-2xl bg-stone-800 border border-stone-700 flex items-center justify-center mx-auto text-orange-400">
@@ -210,10 +203,8 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
             </form>
           </div>
         ) : (
-          /* Authenticated Admin Dashboard */
           <div className="flex-1 overflow-hidden flex flex-col">
             
-            {/* Top Navigation Tabs & Quick Metrics */}
             <div className="px-6 py-3 border-b border-stone-800 bg-stone-950/70 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <button
@@ -242,7 +233,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                 </button>
               </div>
 
-              {/* Quick Metrics Badges */}
               <div className="flex items-center gap-3 text-xs font-mono">
                 <div className="px-2.5 py-1 rounded-md bg-stone-900 border border-stone-800 text-stone-300">
                   <span className="text-stone-500">Pipeline: </span>
@@ -259,14 +249,11 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
               </div>
             </div>
 
-            {/* TAB 1: ORDERS VAULT */}
             {activeTab === 'orders' && (
               <div className="flex-1 overflow-hidden flex flex-col md:flex-row">
                 
-                {/* Orders List & Filters */}
                 <div className={`${selectedOrder ? 'hidden md:flex' : 'flex'} flex-col w-full md:w-1/2 border-r border-stone-800 overflow-hidden`}>
                   
-                  {/* Search and Filter bar */}
                   <div className="p-3 border-b border-stone-800 bg-stone-950/40 space-y-2">
                     <div className="relative">
                       <input
@@ -296,7 +283,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                     </div>
                   </div>
 
-                  {/* Orders Scrollable List */}
                   <div className="flex-1 overflow-y-auto divide-y divide-stone-800/60">
                     {filteredOrders.length === 0 ? (
                       <div className="p-8 text-center text-xs font-mono text-stone-500">
@@ -341,12 +327,10 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
 
                 </div>
 
-                {/* Selected Order Detailed Editor */}
                 <div className={`${selectedOrder ? 'flex' : 'hidden md:flex'} flex-col flex-1 overflow-y-auto p-5 space-y-5 bg-stone-950/40`}>
                   {selectedOrder ? (
                     <div className="space-y-5">
                       
-                      {/* Top Bar for Selected Order */}
                       <div className="flex items-start justify-between gap-3 pb-3 border-b border-stone-800">
                         <div>
                           <div className="flex items-center gap-2">
@@ -370,7 +354,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                         </button>
                       </div>
 
-                      {/* Status Selector & Lead Assignment */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 rounded-xl bg-stone-900 border border-stone-800">
                         <div>
                           <label className="text-[10px] font-mono uppercase text-stone-400 block mb-1">
@@ -412,14 +395,12 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                         </div>
                       </div>
 
-                      {/* Client Overview & WhatsApp Ping */}
                       <div className="p-4 rounded-xl bg-stone-900 border border-stone-800 space-y-3">
                         <div className="flex items-center justify-between">
                           <span className="text-[10px] font-mono uppercase text-stone-400">
                             Client Contact Details:
                           </span>
                           
-                          {/* 1-Click WhatsApp Status Notification */}
                           <a
                             href={`https://wa.me/${selectedOrder.client.phoneOrWhatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello ${selectedOrder.client.name}, update regarding your f0undr Order [${selectedOrder.id}]: Status is now "${(STATUS_LABELS[selectedOrder.status] || STATUS_LABELS.submitted).label}". Let us know if you have any questions!`)}`}
                             target="_blank"
@@ -458,7 +439,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                         </div>
                       </div>
 
-                      {/* Milestones Management */}
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <label className="text-xs font-mono uppercase text-stone-400">
@@ -491,7 +471,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                         </div>
                       </div>
 
-                      {/* Internal Notes */}
                       <div>
                         <label className="text-xs font-mono uppercase text-stone-400 block mb-1">
                           Atelier Internal Notes (Private):
@@ -505,7 +484,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                         />
                       </div>
 
-                      {/* Action Bar */}
                       <div className="flex items-center justify-between pt-3 border-t border-stone-800 text-xs font-mono">
                         <button
                           onClick={() => downloadReceiptFile(selectedOrder)}
@@ -542,7 +520,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
               </div>
             )}
 
-            {/* TAB 2: STUDIO SETTINGS */}
             {activeTab === 'settings' && (
               <div className="flex-1 overflow-y-auto p-6 max-w-2xl mx-auto w-full space-y-6">
                 
@@ -633,7 +610,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                     </span>
                   </div>
 
-
                   <div className="pt-2">
                     <button
                       type="submit"
@@ -644,7 +620,6 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                   </div>
                 </form>
 
-                {/* Data Backup & Reset */}
                 <div className="pt-6 border-t border-stone-800 space-y-4">
                   <h4 className="text-sm font-mono uppercase tracking-wider text-stone-400">
                     Data Operations &amp; Backup

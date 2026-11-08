@@ -58,7 +58,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
       <div className="bg-stone-900 border border-stone-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl overflow-hidden text-center">
         
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 rounded-lg bg-stone-800 text-stone-400 hover:text-white transition-colors cursor-pointer"
@@ -67,7 +66,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        {/* Success Icon */}
         <div className="w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4 text-emerald-400">
           <CheckCircle2 className="w-9 h-9" />
         </div>
@@ -80,7 +78,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           Your project specification is compiled. Now forward it directly to Huzaifa through one of the 3 official channels to lock in your slot.
         </p>
 
-        {/* Order Reference Code Box */}
         <div className="p-4 rounded-2xl bg-stone-950 border border-stone-800 flex items-center justify-between gap-4 mb-6 text-left">
           <div>
             <span className="text-[10px] font-mono uppercase text-stone-500 block">
@@ -100,7 +97,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           </button>
         </div>
 
-        {/* Project Cost & Payment Gateway Details */}
         <div className="p-4 rounded-2xl bg-stone-950/80 border border-stone-800/80 mb-5 text-left space-y-2.5">
           <div className="flex items-center justify-between pb-2 border-b border-stone-800/60">
             <div>
@@ -116,7 +112,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
             </div>
           </div>
 
-          {/* Multi-Currency Equivalents (Dollars, Pounds, PKR) */}
           <div className="text-[11px] font-mono text-stone-400 flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span className="text-stone-500">Equivalents:</span>
             <span>{formatPrice(order.targetBudgetUsd, 'USD')} Dollars</span>
@@ -126,7 +121,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
             <span className="text-emerald-400 font-semibold">{formatPrice(order.targetBudgetUsd, 'PKR')} PKR</span>
           </div>
 
-          {/* Selected Payment Method */}
           <div className="pt-2 border-t border-stone-800/60 flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-xs font-mono">
               <CreditCard className="w-3.5 h-3.5 text-sky-400" />
@@ -162,7 +156,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           </div>
         </div>
 
-        {/* Exclusive Order Channels Section */}
         <div className="text-left mb-6">
           <div className="flex items-center justify-between mb-2.5">
             <span className="text-xs font-mono text-orange-400 uppercase tracking-wider font-semibold">
@@ -172,12 +165,11 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           </div>
 
           <div className="space-y-2.5">
-            {/* 1. WhatsApp Action */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm flex items-center justify-between shadow-lg shadow-emerald-600/20 transition-all cursor-pointer group"
+              className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm flex items-between shadow-lg shadow-emerald-600/20 transition-all cursor-pointer group"
             >
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center">
@@ -191,7 +183,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
               <ExternalLink className="w-4 h-4 opacity-75 group-hover:translate-x-0.5 transition-transform" />
             </a>
 
-            {/* 2. Discord Action */}
             <div className="p-3 rounded-xl bg-stone-950 border border-indigo-500/30 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
@@ -223,7 +214,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
               </button>
             </div>
 
-            {/* 3. Direct Phone Call Action */}
             <a
               href={`tel:${F0UNDR_STUDIO_CONFIG.phoneNumber}`}
               className="w-full py-3 px-4 rounded-xl bg-stone-950 hover:bg-stone-850 text-white border border-stone-800 hover:border-orange-500/50 text-sm flex items-center justify-between transition-all cursor-pointer group"
@@ -242,9 +232,7 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           </div>
         </div>
 
-        {/* Secondary Actions */}
         <div className="grid grid-cols-2 gap-2.5 mb-6">
-          {/* Download Receipt */}
           <button
             onClick={() => downloadReceiptFile(order)}
             className="py-2.5 px-3 rounded-xl bg-stone-800/80 hover:bg-stone-700 text-stone-200 font-medium text-xs flex items-center justify-center gap-1.5 border border-stone-700/60 transition-colors cursor-pointer"
@@ -253,7 +241,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
             <span>Download .txt Spec</span>
           </button>
 
-          {/* Track Live */}
           <button
             onClick={() => {
               onClose();
@@ -266,7 +253,6 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
           </button>
         </div>
 
-        {/* Guarantees */}
         <div className="pt-4 border-t border-stone-800/80 flex items-center justify-between text-xs text-stone-500 font-mono">
           <div className="flex items-center gap-1.5 text-stone-400">
             <ShieldCheck className="w-4 h-4 text-orange-400" />

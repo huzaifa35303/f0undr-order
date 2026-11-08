@@ -44,7 +44,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo & Brand */}
           <div className="flex items-center gap-3">
             <a 
               href="#" 
@@ -67,7 +66,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
           </div>
 
-          {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-stone-300">
             <a 
               href="#services" 
@@ -110,9 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </nav>
 
-          {/* Right Controls: Currency & Actions */}
           <div className="hidden sm:flex items-center gap-3">
-            {/* 1-Click Multi-Currency Switcher (Dollars, Pounds, PKR, EUR) */}
             <div className="flex items-center p-0.5 rounded-xl bg-stone-900 border border-stone-800/90 shadow-inner">
               {SUPPORTED_CURRENCIES.map((curr) => (
                 <button
@@ -131,7 +127,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
 
-            {/* Direct WhatsApp Quick Chat */}
             <a
               href={`https://wa.me/${cleanWhatsappNumber}?text=${encodeURIComponent('Hello Huzaifa! I am interested in placing an order with f0undr Studio.')}`}
               target="_blank"
@@ -143,7 +138,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden lg:inline">WhatsApp</span>
             </a>
 
-            {/* Direct Discord Tag */}
             <div
               className="px-2.5 py-1.5 rounded-lg bg-indigo-950/40 border border-indigo-500/30 text-indigo-300 text-xs font-mono flex items-center gap-1.5 select-all"
               title="Huzaifa Discord: king_huzaifa001"
@@ -153,7 +147,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="font-semibold text-indigo-300">king_huzaifa001</span>
             </div>
 
-            {/* Direct Phone Call */}
             <a
               href="tel:03446789261"
               className="p-2 rounded-lg bg-amber-950/40 border border-amber-500/30 text-amber-300 hover:bg-amber-900/50 hover:text-amber-200 transition-all text-xs font-mono flex items-center gap-1.5 cursor-pointer"
@@ -163,9 +156,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden xl:inline">03446789261</span>
             </a>
 
-
-
-            {/* Primary Order Wizard CTA */}
             <button
               onClick={onOpenOrderWizard}
               className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-orange-600/20 hover:shadow-orange-600/40 transition-all cursor-pointer"
@@ -175,7 +165,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={onOpenOrderWizard}
@@ -194,7 +183,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-stone-800 bg-stone-950 px-4 pt-3 pb-6 space-y-3">
           <div className="pb-3 border-b border-stone-800 space-y-1.5">
@@ -291,7 +279,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Call Direct: 03446789261</span>
             </a>
           </div>
-
 
         </div>
       )}

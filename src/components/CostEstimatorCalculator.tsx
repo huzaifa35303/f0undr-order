@@ -4,7 +4,7 @@ import {
   ArrowRight, 
   Sparkles, 
   Clock, 
-  Check,
+  Check, 
   CreditCard
 } from 'lucide-react';
 import type { Currency, ServiceId, ServiceTier, TimelineUrgency } from '../types';
@@ -37,7 +37,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
     const tierMult = TIER_CONFIG[selectedTier].multiplier;
     const urgencyMult = URGENCY_CONFIG[selectedUrgency].multiplier;
     
-    // Average feature cost roughly $180
     const featuresCost = featureCount * 180;
 
     let designMult = 1.0;
@@ -46,7 +45,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
 
     const total = ((base * tierMult) + featuresCost) * designMult * urgencyMult;
 
-    // Delivery days
     let days = 10;
     if (selectedTier === 'starter') days = 6;
     if (selectedTier === 'enterprise') days = 20;
@@ -63,12 +61,10 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
 
   return (
     <section id="calculator" className="py-20 bg-stone-950 border-t border-stone-900 relative overflow-hidden">
-      {/* Background Gradient */}
       <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[500px] h-[300px] bg-orange-600/10 blur-[130px] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono uppercase tracking-wider mb-4">
             <Calculator className="w-3.5 h-3.5" />
@@ -82,13 +78,10 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
           </p>
         </div>
 
-        {/* Calculator Main Box */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           
-          {/* Controls Column (7 cols) */}
           <div className="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 space-y-6 border border-stone-800">
             
-            {/* Service Domain */}
             <div>
               <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-2.5">
                 1. Commission Domain:
@@ -110,7 +103,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Architecture Tier */}
             <div>
               <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-2.5">
                 2. Architecture &amp; Scale Tier:
@@ -135,7 +127,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Features Slider */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-stone-400">
@@ -161,7 +152,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Design & Motion Fidelity */}
             <div>
               <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-2.5">
                 4. Visual Fidelity &amp; Motion Polish:
@@ -188,7 +178,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Urgency */}
             <div>
               <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-2.5">
                 5. Turnaround Urgency:
@@ -213,14 +202,12 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
 
           </div>
 
-          {/* Results Summary Card (5 cols) */}
           <div className="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-orange-500/30 bg-gradient-to-b from-stone-900 via-stone-900 to-stone-950 relative space-y-6 shadow-2xl">
             
             <div className="flex items-center justify-between pb-4 border-b border-stone-800">
               <span className="text-xs font-mono uppercase tracking-wider text-stone-400">
                 Calculated Estimate
               </span>
-              {/* 1-Click Currency Switcher */}
               {onCurrencyChange && (
                 <div className="flex items-center p-0.5 rounded-lg bg-stone-950 border border-stone-800 text-[11px] font-mono">
                   {SUPPORTED_CURRENCIES.map((curr) => (
@@ -242,14 +229,12 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               )}
             </div>
 
-            {/* Main Price Readout */}
             <div>
               <span className="text-xs text-stone-400 block mb-1">Target Budget Range</span>
               <div className="text-4xl sm:text-5xl font-mono font-bold text-white tracking-tight flex items-baseline gap-2">
                 <span>{formatPrice(estimate.price, currentCurrency)}</span>
                 <span className="text-xs font-normal text-stone-500 font-mono">{currentCurrency}</span>
               </div>
-              {/* Multi-Currency Equivalents (Dollars, Pounds, PKR) */}
               <div className="text-[11px] font-mono text-stone-400 mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 pt-2 border-t border-stone-800/60">
                 <span className="text-stone-500">Equivalents:</span>
                 <span className={currentCurrency === 'USD' ? 'text-orange-400 font-bold' : 'text-stone-300'}>
@@ -266,7 +251,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Payment Escrow Badge */}
             <div className="p-3 rounded-2xl bg-stone-950 border border-stone-800 space-y-1.5 text-xs font-mono">
               <div className="flex items-center justify-between text-stone-300">
                 <span className="font-semibold flex items-center gap-1.5">
@@ -286,7 +270,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Timeline Readout */}
             <div className="p-4 rounded-2xl bg-stone-950/80 border border-stone-800 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <Clock className="w-5 h-5 text-amber-400" />
@@ -300,7 +283,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </span>
             </div>
 
-            {/* Inclusions */}
             <div className="space-y-2 text-xs text-stone-300">
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-orange-400 shrink-0" />
@@ -320,7 +302,6 @@ export const CostEstimatorCalculator: React.FC<CostEstimatorCalculatorProps> = (
               </div>
             </div>
 
-            {/* Lock in & Build Button */}
             <button
               onClick={() => onLaunchOrderWithConfig(selectedServiceId, selectedTier, selectedUrgency)}
               className="w-full py-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-xl shadow-orange-600/30 transition-all cursor-pointer"

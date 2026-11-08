@@ -9,7 +9,6 @@ import {
   Sparkles 
 } from 'lucide-react';
 
-
 export const Whyf0undrSection: React.FC = () => {
   const pillars = [
     {
@@ -61,7 +60,6 @@ export const Whyf0undrSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {pillars.map((p, idx) => (
             <div
@@ -81,7 +79,6 @@ export const Whyf0undrSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Quote Banner */}
         <div className="mt-16 p-8 rounded-3xl glass-panel border border-stone-800 text-center max-w-3xl mx-auto">
           <blockquote className="text-lg sm:text-xl font-serif italic text-stone-200 mb-3">
             "Compound effort beats linear hustle every single time. Build software that gives your venture unfair leverage."

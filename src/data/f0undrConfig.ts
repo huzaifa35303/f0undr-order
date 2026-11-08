@@ -6,7 +6,6 @@ export const F0UNDR_STUDIO_CONFIG = {
   tagline: 'Bespoke Software, Autonomous AI, Games & High-Impact Creative Production',
   founder: 'M.Huzaifa',
   coFounders: ['Abdull Rehman Khizar', 'f0undr'],
-  // Official Exclusive Ordering Channels
   whatsappNumber: '+923446789261',
   phoneNumber: '03446789261',
   phoneInternational: '+923446789261',
@@ -16,7 +15,6 @@ export const F0UNDR_STUDIO_CONFIG = {
   githubUrl: 'https://github.com/f0undr',
   twitterUrl: 'https://x.com/f0undr_core',
   
-  // Official Payment Gateways
   payments: {
     stripe: {
       name: 'Stripe',
@@ -45,10 +43,8 @@ export const F0UNDR_STUDIO_CONFIG = {
     }
   },
 
-  // Default admin PIN for the cockpit
   defaultAdminPin: 'f0undr',
   
-  // Guarantees and policies
   guarantees: [
     {
       title: '100% IP & Code Ownership',

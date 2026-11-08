@@ -40,7 +40,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
       setSearchQuery(initialOrderId);
       handleSearch(initialOrderId);
     } else {
-      // Pick the first available order from storage to display as a helpful demo!
       const stored = getStoredOrders();
       if (stored.length > 0) {
         setCurrentOrder(stored[0]);
@@ -59,7 +58,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
     if (order) {
       setCurrentOrder(order);
     } else {
-      // Try searching by client phone or discord
       const stored = getStoredOrders();
       const matched = stored.find(
         (o) =>
@@ -94,7 +92,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
       <div className="bg-stone-900 border border-stone-800 rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col relative shadow-2xl overflow-hidden my-auto">
         
-        {/* Top Header */}
         <div className="px-6 py-4 border-b border-stone-800 bg-stone-950 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="p-2 rounded-lg bg-orange-600/20 text-orange-400">
@@ -118,7 +115,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
           </button>
         </div>
 
-        {/* Search Bar */}
         <div className="p-6 border-b border-stone-800 bg-stone-950/60">
           <form
             onSubmit={(e) => {
@@ -156,12 +152,10 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
           )}
         </div>
 
-        {/* Order Details Body */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {currentOrder ? (
             <div className="space-y-6">
               
-              {/* Order Info Card */}
               <div className="p-5 rounded-2xl bg-stone-950 border border-stone-800 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-800">
                   <div>
@@ -173,7 +167,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                     </span>
                   </div>
 
-                  {/* Status Pill */}
                   <div>
                     {(() => {
                       const cfg = STATUS_LABELS[currentOrder.status] || STATUS_LABELS.submitted;
@@ -196,7 +189,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                   </p>
                 </div>
 
-                {/* Progress Bar */}
                 <div className="space-y-1.5 pt-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-stone-400">Pipeline Progression</span>
@@ -212,7 +204,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                   </div>
                 </div>
 
-                {/* Metadata Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-stone-800/80 text-xs font-mono">
                   <div>
                     <span className="text-stone-500 text-[10px] block">Domain</span>
@@ -238,7 +229,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                 </div>
               </div>
 
-              {/* Milestones Checklist */}
               <div>
                 <h4 className="text-xs font-mono uppercase tracking-wider text-stone-400 mb-3">
                   Technical Milestones &amp; Deliverables:
@@ -281,7 +271,6 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                 </div>
               </div>
 
-              {/* Client Contact Info */}
               <div className="p-4 rounded-xl bg-stone-950/40 border border-stone-800/80 text-xs text-stone-400 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
                   <span className="text-stone-500 font-mono text-[10px] block">Commissioned By</span>

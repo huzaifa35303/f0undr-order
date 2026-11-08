@@ -52,19 +52,16 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
 }) => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
-  // Form State
   const [selectedServiceId, setSelectedServiceId] = useState<ServiceId>(initialServiceId);
   const [selectedTier, setSelectedTier] = useState<ServiceTier>('pro');
   const [selectedUrgency, setSelectedUrgency] = useState<TimelineUrgency>('standard');
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   
-  // Scope details
   const [projectTitle, setProjectTitle] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
   const [techStackPreference, setTechStackPreference] = useState('');
   const [referenceLinksText, setReferenceLinksText] = useState('');
 
-  // Contact info
   const [clientName, setClientName] = useState('');
   const [clientPhone, setClientPhone] = useState('');
   const [clientDiscord, setClientDiscord] = useState('');
@@ -74,14 +71,11 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentMethod>('stripe');
   const [wizardCurrency, setWizardCurrency] = useState<Currency>(currentCurrency);
 
-  // Error validation
   const [validationError, setValidationError] = useState<string | null>(null);
 
-  // Sync initialServiceId and currency when modal opens
   useEffect(() => {
     if (initialServiceId) {
       setSelectedServiceId(initialServiceId);
-      // Preselect popular features for this category
       const cat = SERVICES_DATA.find((s) => s.id === initialServiceId);
       if (cat) {
         setSelectedFeatures(cat.featuresList.filter((f) => f.popular).map((f) => f.id));
@@ -94,13 +88,11 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
 
   const currentCategory = SERVICES_DATA.find((s) => s.id === selectedServiceId) || SERVICES_DATA[0];
 
-  // Dynamic Calculation
   const calculateTotalBudgetUsd = (): number => {
     const basePrice = currentCategory.startingPriceUsd;
     const tierMultiplier = TIER_CONFIG[selectedTier].multiplier;
     const urgencyMultiplier = URGENCY_CONFIG[selectedUrgency].multiplier;
 
-    // Sum selected feature prices
     const featuresTotal = selectedFeatures.reduce((acc, featId) => {
       const feat = currentCategory.featuresList.find((f) => f.id === featId);
       return acc + (feat ? feat.estimatedPriceUsd : 0);
@@ -111,7 +103,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
   };
 
   const calculateEstimatedDays = (): number => {
-    // Extract base days from string like "5 - 18 Days" -> avg ~ 10
     const numbers = currentCategory.estimatedDays.match(/\d+/g);
     let avgDays = 10;
     if (numbers && numbers.length >= 2) {
@@ -128,47 +119,53 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
   };
 
   const toggleFeature = (featureId: string) => {
-    if (selectedFeatures.includes(featureId)) {
-      setSelectedFeatures(selectedFeatures.filter((id) => id !== featureId));
-    } else {
-      setSelectedFeatures([...selectedFeatures, featureId]);
+    setSelectedFeatures((prev) =>
+      prev.includes(featureId) ? prev.filter((id) => id !== featureId) : [...prev, featureId]
+    );
+  };
+
+  const validateStep = (): boolean => {
+    setValidationError(null);
+    if (currentStep === 1) {
+      if (!selectedServiceId) {
+        setValidationError('Please select a service category.');
+        return false;
+      }
     }
+    if (currentStep === 3) {
+      if (!projectTitle.trim()) {
+        setValidationError('Please enter a project title or working codename.');
+        return false;
+      }
+      if (!projectDescription.trim() || projectDescription.trim().length < 15) {
+        setValidationError('Please provide a project description (at least 15 characters).');
+        return false;
+      }
+    }
+    if (currentStep === 4) {
+      if (!clientName.trim()) {
+        setValidationError('Please enter your full name.');
+        return false;
+      }
+      if (!clientPhone.trim()) {
+        setValidationError('Please enter your WhatsApp or mobile number.');
+        return false;
+      }
+    }
+    return true;
   };
 
   const handleNextStep = () => {
-    setValidationError(null);
-    if (currentStep === 1) {
-      setCurrentStep(2);
-    } else if (currentStep === 2) {
-      setCurrentStep(3);
-    } else if (currentStep === 3) {
-      if (!projectTitle.trim()) {
-        setValidationError('Please provide a working title for your project.');
-        return;
-      }
-      if (!projectDescription.trim() || projectDescription.length < 15) {
-        setValidationError('Please share at least a couple sentences describing your vision or requirements.');
-        return;
-      }
-      setCurrentStep(4);
+    if (validateStep()) {
+      setCurrentStep((prev) => Math.min(4, prev + 1));
     }
   };
 
-  const handleSubmitOrder = (e: React.FormEvent) => {
-    e.preventDefault();
-    setValidationError(null);
-
-    if (!clientName.trim()) {
-      setValidationError('Please enter your full name or company representative name.');
-      return;
-    }
-    if (!clientPhone.trim() || clientPhone.length < 7) {
-      setValidationError('Please provide your WhatsApp or phone number so Huzaifa can reach you.');
-      return;
-    }
+  const handleSubmitOrder = () => {
+    if (!validateStep()) return;
 
     const orderId = generateOrderId();
-    const finalBudget = calculateTotalBudgetUsd();
+    const finalBudgetUsd = calculateTotalBudgetUsd();
     const finalDays = calculateEstimatedDays();
 
     const links = referenceLinksText
@@ -176,12 +173,10 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
       .map((l) => l.trim())
       .filter((l) => l.length > 0);
 
-    const now = new Date().toISOString();
-
     const newOrder: Order = {
       id: orderId,
-      createdAt: now,
-      updatedAt: now,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
       serviceId: selectedServiceId,
       serviceTitle: currentCategory.title,
       tier: selectedTier,
@@ -191,7 +186,7 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
       selectedFeatures,
       techStackPreference: techStackPreference.trim() || undefined,
       referenceLinks: links.length > 0 ? links : undefined,
-      targetBudgetUsd: finalBudget,
+      targetBudgetUsd: finalBudgetUsd,
       currency: wizardCurrency,
       paymentMethod: selectedPaymentMethod,
       estimatedDays: finalDays,
@@ -204,9 +199,8 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
         preferredContactMethod: preferredContact,
       },
       status: 'submitted',
-
       milestones: [
-        { id: 'm1', title: 'Technical Architecture & Specification Sign-off', description: 'Review architecture draft, wireframes and setup repo', completed: false },
+        { id: 'm1', title: 'Architecture Specification & Scope Sign-off', description: 'Review blueprint, milestone dates, and asset checklist', completed: true },
         { id: 'm2', title: 'Sprint Milestone 1: Core Functionality & Engine', description: 'Working interactive build on staging domain', completed: false },
         { id: 'm3', title: 'Sprint Milestone 2: Polish, Integrations & QA', description: 'End-to-end testing, responsive design check and security review', completed: false },
         { id: 'm4', title: 'Final Handover & Production Deployment', description: 'Full source repository transfer, DNS go-live and documentation', completed: false },
@@ -215,10 +209,8 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
       source: 'wizard'
     };
 
-    // Save to local storage
     saveNewOrder(newOrder);
 
-    // Trigger celebratory confetti
     try {
       confetti({
         particleCount: 120,
@@ -226,7 +218,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
         origin: { y: 0.6 }
       });
     } catch {
-      // ignore in environments without canvas
     }
 
     onOrderCompleted(newOrder);
@@ -249,7 +240,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
       <div className="bg-stone-900 border border-stone-800 rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col relative shadow-2xl overflow-hidden my-auto">
         
-        {/* Top Header Bar */}
         <div className="px-6 py-4 border-b border-stone-800 bg-stone-950 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-orange-600/20 border border-orange-500/30 flex items-center justify-center text-orange-400 font-bold text-sm">
@@ -269,7 +259,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
           </div>
 
           <div className="flex items-center gap-4">
-            {/* Live Ticker */}
             <div className="hidden sm:flex items-center gap-3 px-3 py-1.5 rounded-xl bg-stone-900 border border-stone-800 text-xs font-mono">
               <div className="flex items-center gap-1 text-orange-400">
                 <DollarSign className="w-3.5 h-3.5" />
@@ -291,7 +280,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
           </div>
         </div>
 
-        {/* Step Progress Indicators */}
         <div className="grid grid-cols-4 border-b border-stone-800 bg-stone-950/40 text-center text-xs font-mono">
           <div className={`py-2 px-1 border-b-2 ${currentStep >= 1 ? 'border-orange-500 text-orange-400 font-semibold' : 'border-transparent text-stone-500'}`}>
             1. Domain
@@ -307,7 +295,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
           </div>
         </div>
 
-        {/* Modal Body / Scrollable Form */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           
           {validationError && (
@@ -317,7 +304,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
             </div>
           )}
 
-          {/* STEP 1: SERVICE & TIER */}
           {currentStep === 1 && (
             <div className="space-y-6 animate-in fade-in duration-200">
               <div>
@@ -333,7 +319,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                         key={service.id}
                         onClick={() => {
                           setSelectedServiceId(service.id);
-                          // pre-populate features
                           setSelectedFeatures(service.featuresList.filter((f) => f.popular).map((f) => f.id));
                         }}
                         className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between h-24 ${
@@ -360,7 +345,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                 </div>
               </div>
 
-              {/* Tier Selection */}
               <div>
                 <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-3">
                   Select Scope &amp; Architecture Tier:
@@ -402,7 +386,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
             </div>
           )}
 
-          {/* STEP 2: FEATURES & URGENCY */}
           {currentStep === 2 && (
             <div className="space-y-6 animate-in fade-in duration-200">
               <div>
@@ -451,7 +434,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                 </div>
               </div>
 
-              {/* Urgency */}
               <div>
                 <label className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-3">
                   Delivery Urgency &amp; Sprint Speed:
@@ -487,7 +469,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
             </div>
           )}
 
-          {/* STEP 3: SCOPE & BRIEF */}
           {currentStep === 3 && (
             <div className="space-y-4 animate-in fade-in duration-200">
               <div>
@@ -544,11 +525,9 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
             </div>
           )}
 
-          {/* STEP 4: CLIENT CONTACT & REVIEW */}
           {currentStep === 4 && (
             <div className="space-y-6 animate-in fade-in duration-200">
               
-              {/* Order Recap Banner */}
               <div className="p-4 rounded-2xl bg-stone-950 border border-stone-800 space-y-3">
                 <div className="flex items-center justify-between pb-3 border-b border-stone-800/80">
                   <div className="flex items-center gap-2">
@@ -564,7 +543,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                         {wizardCurrency}
                       </span>
                     </div>
-                    {/* Currency quick toggle pills */}
                     <div className="flex items-center gap-1 mt-1 justify-end">
                       {SUPPORTED_CURRENCIES.map((c) => (
                         <button
@@ -615,7 +593,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                 )}
               </div>
 
-              {/* Contact Information Fields */}
               <div className="space-y-4">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-stone-400">
                   Client &amp; Contact Information:
@@ -644,7 +621,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                       className="w-full px-3.5 py-2 rounded-xl bg-stone-950 border border-stone-800 text-stone-200 text-sm focus:outline-none focus:border-orange-500"
                     />
                   </div>
-
 
                   <div>
                     <label className="text-xs text-stone-400 block mb-1">WhatsApp / Mobile Number: *</label>
@@ -711,7 +687,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
                   </div>
                 </div>
 
-                {/* Preferred Payment Gateway (Stripe, PayPal, Wire) */}
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="text-xs text-stone-400 block font-medium">
@@ -784,7 +759,6 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
 
         </div>
 
-        {/* Modal Bottom Action Controls */}
         <div className="px-6 py-4 border-t border-stone-800 bg-stone-950 flex items-center justify-between">
           {currentStep > 1 ? (
             <button

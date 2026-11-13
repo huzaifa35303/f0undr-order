@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             <p className="text-xs sm:text-sm text-stone-400 leading-relaxed font-normal max-w-sm">
-              The high-leverage commissioning workshop of the <strong className="text-stone-200">f0undr</strong> ecosystem. Authoring computational software, autonomous neural agents, interactive games, 3D CGI video, and production web systems.
+              The high-leverage commissioning workshop of the <strong className="text-stone-200">f0undr</strong> ecosystem. Authoring custom enterprise software, autonomous AI agents, interactive 2D/3D games, 3D CGI video, and modern web platforms.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-2">

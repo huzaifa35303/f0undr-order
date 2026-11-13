@@ -122,7 +122,7 @@ export const SERVICES_DATA: ServiceCategory[] = [
       { id: 'vid_social_pack', name: 'Pack of 3 Viral Short-Form Cutdowns', description: 'Fast-paced hook variations for TikTok, Instagram Reels & YouTube Shorts', estimatedPriceUsd: 180 }
     ],
     sampleWorks: [
-      { title: 'f0undr Core OS Reveal', description: 'Minimalist cinematic 3D sequence unveiling computational software architecture.', tags: ['Blender', 'AfterEffects', '4K'] },
+      { title: 'f0undr Core OS Reveal', description: 'Minimalist cinematic 3D sequence unveiling modern software systems architecture.', tags: ['Blender', 'AfterEffects', '4K'] },
       { title: 'SaaS Platform Explainer (60s)', description: 'Isometric UI motion graphics explaining distributed cloud infrastructure.', tags: ['MotionGraphics', 'VO'] },
       { title: 'Apex Hardware Launch Trailer', description: 'High-energy 3D product render with metallic lighting and intense sound design.', tags: ['Cinema4D', 'DaVinci'] }
     ]

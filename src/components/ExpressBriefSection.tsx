@@ -97,9 +97,9 @@ export const ExpressBriefSection: React.FC<ExpressBriefSectionProps> = ({
                 <Zap className="w-3.5 h-3.5" />
                 <span>60-Second Rapid Inquiry</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">
                 In a Rush? Send an Express Brief
-              </h3>
+              </h2>
               <p className="text-xs sm:text-sm text-stone-400 mt-1">
                 Skip the detailed wizard. Submit your vision and receive direct feedback from M.Huzaifa within 2 business hours.
               </p>

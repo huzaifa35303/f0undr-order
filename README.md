@@ -67,7 +67,7 @@ The platform includes full sitemap support conforming to the official Sitemap 0.
   - `OfferCatalog` indexing all 8 service departments with exact deliverables
   - `FAQPage` with Google Rich Snippets support
 - **Social Graph Optimization**: OpenGraph and Twitter Summary Large Image cards with 100% compliant metadata.
-- **Robots Directives**: `public/robots.txt` declaring full indexing access and referencing `https://f0undr-order.vercel.app/sitemap.xml`.
+- **Robots Directives**: `public/robots.txt` declaring full indexing access and referencing `https://order.f0undrteam.site/sitemap.xml`.
 
 ---
 
@@ -105,7 +105,7 @@ This project includes a production-tuned `vercel.json` with SPA route rewrites a
 2. Go to [Vercel Dashboard](https://vercel.com/new).
 3. Import the `f0undr-order` repository.
 4. Framework Preset: **Vite** (auto-detected).
-5. Click **Deploy**. Vercel will build and assign `https://f0undr-order.vercel.app` in under 60 seconds!
+5. Click **Deploy**. Vercel will build and assign `https://order.f0undrteam.site` in under 60 seconds!
 
 ---
 

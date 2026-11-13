@@ -5,98 +5,98 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://f0undr-order.vercel.app/</loc>
+    <loc>https://order.f0undrteam.site/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?view=services</loc>
+    <loc>https://order.f0undrteam.site/?view=services</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?view=calculator</loc>
+    <loc>https://order.f0undrteam.site/?view=calculator</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?view=express</loc>
+    <loc>https://order.f0undrteam.site/?view=express</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?view=tracker</loc>
+    <loc>https://order.f0undrteam.site/?view=tracker</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?view=sitemap</loc>
+    <loc>https://order.f0undrteam.site/?view=sitemap</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=websites</loc>
+    <loc>https://order.f0undrteam.site/?service=websites</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=apps</loc>
+    <loc>https://order.f0undrteam.site/?service=apps</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=games</loc>
+    <loc>https://order.f0undrteam.site/?service=games</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=videos</loc>
+    <loc>https://order.f0undrteam.site/?service=videos</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=images</loc>
+    <loc>https://order.f0undrteam.site/?service=images</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=ads</loc>
+    <loc>https://order.f0undrteam.site/?service=ads</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=tools</loc>
+    <loc>https://order.f0undrteam.site/?service=tools</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://f0undr-order.vercel.app/?service=ai</loc>
+    <loc>https://order.f0undrteam.site/?service=ai</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

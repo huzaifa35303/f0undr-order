@@ -358,7 +358,7 @@ export const SiteMapModal: React.FC<SiteMapModalProps> = ({
           <section className="p-4 rounded-2xl bg-stone-900/20 border border-stone-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-stone-400">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span>Canonical Protocol URL: https://f0undr-order.vercel.app/sitemap.xml</span>
+              <span>Canonical Protocol URL: https://order.f0undrteam.site/sitemap.xml</span>
             </div>
             <a
               href="/sitemap.xml"

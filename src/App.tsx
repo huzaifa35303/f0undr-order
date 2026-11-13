@@ -14,6 +14,7 @@ import { SiteMapModal } from './components/SiteMapModal';
 import type { Currency, Order, ServiceId } from './types';
 import { getAdminSettings } from './utils/storage';
 import type { AdminSettings } from './utils/storage';
+import { getMetadataForRoute, applyDocumentMetadata } from './utils/seo';
 import { MessageCircle, PlusCircle, Map } from 'lucide-react';
 
 export function App() {
@@ -89,8 +90,35 @@ export function App() {
 
     handleRoute();
     window.addEventListener('hashchange', handleRoute);
-    return () => window.removeEventListener('hashchange', handleRoute);
+    window.addEventListener('popstate', handleRoute);
+    return () => {
+      window.removeEventListener('hashchange', handleRoute);
+      window.removeEventListener('popstate', handleRoute);
+    };
   }, [handleOpenOrderWizard, handleOpenTracker, scrollToCalculator, scrollToExpress]);
+
+  useEffect(() => {
+    let currentView: string | null = null;
+    let currentService: string | null = null;
+    let currentTrack: string | null = null;
+
+    if (isSiteMapOpen) {
+      currentView = 'sitemap';
+    } else if (isOrderWizardOpen) {
+      currentService = wizardServiceId;
+    } else if (isTrackerOpen) {
+      currentView = 'tracker';
+      currentTrack = trackerOrderId || null;
+    } else {
+      const searchParams = new URLSearchParams(window.location.search);
+      currentView = searchParams.get('view');
+      currentService = searchParams.get('service');
+      currentTrack = searchParams.get('track');
+    }
+
+    const meta = getMetadataForRoute(currentView, currentService, currentTrack);
+    applyDocumentMetadata(meta);
+  }, [isSiteMapOpen, isOrderWizardOpen, wizardServiceId, isTrackerOpen, trackerOrderId]);
 
   const cleanWhatsapp = adminSettings.whatsappNumber.replace(/[^0-9]/g, '');
 

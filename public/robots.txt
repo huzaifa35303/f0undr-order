@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /*?admin=*
+Disallow: /*?view=admin
+Disallow: /api/
 
-Sitemap: https://f0undr-order.vercel.app/sitemap.xml
+Sitemap: https://order.f0undrteam.site/sitemap.xml

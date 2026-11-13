@@ -12,6 +12,7 @@ export const F0UNDR_STUDIO_CONFIG = {
   discordUsername: 'king_huzaifa001',
   orderNotice: 'Orders are accepted exclusively via WhatsApp, Discord (king_huzaifa001), or Direct Call on 03446789261. No other way.',
 
+  siteUrl: (import.meta as unknown as { env: { VITE_SITE_URL?: string } }).env?.VITE_SITE_URL || 'https://order.f0undrteam.site',
   mainWebsiteUrl: 'https://www.f0undrteam.site/',
   githubUrl: 'https://github.com/f0undr',
   twitterUrl: 'https://x.com/f0undr_core',

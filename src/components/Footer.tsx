@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Sparkles, Shield, MessageCircle, Map, ChevronDown, ChevronUp, Tag } from 'lucide-react';
+import React from 'react';
+import { Sparkles, Shield, MessageCircle, Map } from 'lucide-react';
 import type { ServiceId } from '../types';
-import { SEO_KEYWORDS } from '../data/keywordsData';
 
 interface FooterProps {
   onSelectService: (serviceId: ServiceId) => void;
@@ -20,7 +19,6 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenSiteMap,
   adminWhatsappNumber,
 }) => {
-  const [showTaxonomy, setShowTaxonomy] = useState(false);
   const cleanWhatsappNumber = adminWhatsappNumber.replace(/[^0-9]/g, '');
 
   return (
@@ -145,43 +143,6 @@ export const Footer: React.FC<FooterProps> = ({
 
         </div>
 
-        <section id="sitemap" aria-label="SEO Master Directory & Architecture Sitemap" className="py-6 border-b border-stone-800/80">
-          <div className="flex items-center justify-between cursor-pointer py-2" onClick={() => setShowTaxonomy(!showTaxonomy)}>
-            <div className="flex items-center gap-2">
-              <Tag className="w-4 h-4 text-orange-500" />
-              <h6 className="text-xs font-mono uppercase tracking-wider text-stone-300 font-semibold">
-                SEO Master Capability Directory &amp; Keywords ({SEO_KEYWORDS.length} Indexed Terms)
-              </h6>
-            </div>
-            <button
-              type="button"
-              className="text-xs font-mono text-stone-400 hover:text-white flex items-center gap-1"
-              aria-expanded={showTaxonomy}
-            >
-              <span>{showTaxonomy ? 'Collapse Directory' : 'Expand Directory'}</span>
-              {showTaxonomy ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-            </button>
-          </div>
-
-          {showTaxonomy && (
-            <div className="mt-4 pt-4 border-t border-stone-850 space-y-4 text-[11px] font-mono leading-relaxed">
-              <p className="text-stone-400">
-                The comprehensive indexed catalog of specialized capabilities, platforms, frameworks, and commercial disciplines serviced by f0undr Order Atelier:
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {SEO_KEYWORDS.map((item, idx) => (
-                  <span
-                    key={idx}
-                    className="px-2 py-0.5 rounded bg-stone-900 border border-stone-800/80 text-stone-400 hover:text-stone-200 transition-colors"
-                  >
-                    {item.keyword}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
         <div className="py-6 border-b border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div className="flex flex-wrap items-center gap-2 text-stone-400">
             <span className="text-orange-400 font-semibold">Global Currencies:</span>
@@ -214,14 +175,8 @@ export const Footer: React.FC<FooterProps> = ({
               className="text-orange-400 hover:underline flex items-center gap-1 font-semibold"
             >
               <Sparkles className="w-3 h-3" />
-              <span>f0undr Main Site (f0undrteam.site)</span>
+              <span>f0undr Official Headquarters</span>
             </a>
-            <span>•</span>
-            <a href="/sitemap.xml" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white underline">
-              XML Sitemap
-            </a>
-            <span>•</span>
-            <span className="text-stone-400">Khizar · f0undr · Huzaifa</span>
           </div>
         </div>
 

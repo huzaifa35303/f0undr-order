@@ -14,7 +14,7 @@ export const Whyf0undrSection: React.FC = () => {
     {
       icon: <Users className="w-6 h-6 text-orange-400" />,
       title: 'Principal Engineers Only',
-      description: 'You work directly with M.Huzaifa, Abdull Rehman Khizar, and the f0undr fellows. No account managers or outsourced junior code.'
+      description: 'You work directly with M.Huzaifa and the principal f0undr engineering team. No account managers or outsourced junior code.'
     },
     {
       icon: <GitBranch className="w-6 h-6 text-emerald-400" />,
@@ -84,7 +84,7 @@ export const Whyf0undrSection: React.FC = () => {
             "Compound effort beats linear hustle every single time. Build software that gives your venture unfair leverage."
           </blockquote>
           <span className="text-xs font-mono text-orange-400">
-            — f0undr Atelier Manifesto · Khizar · f0undr · Huzaifa
+            — f0undr Atelier Manifesto · Directed by M.Huzaifa
           </span>
         </div>
 

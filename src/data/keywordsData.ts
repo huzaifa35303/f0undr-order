@@ -14,7 +14,7 @@ export const SEO_KEYWORDS: KeywordItem[] = [
   { keyword: 'hire full stack developers', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'transactional' },
   { keyword: 'custom software development studio', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'commercial' },
   { keyword: 'M.Huzaifa', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'informational' },
-  { keyword: 'Abdull Rehman Khizar', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'informational' },
+  { keyword: 'software architecture consulting', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'commercial' },
   { keyword: '100 percent IP source code ownership', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'commercial' },
   { keyword: 'rapid startup MVP sprint studio', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'transactional' },
   { keyword: 'Pakistan top software engineering atelier', category: 'commercial', categoryLabel: 'Studio & Commercial', intent: 'commercial' },

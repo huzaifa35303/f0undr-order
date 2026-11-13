@@ -8,7 +8,8 @@ import {
   Zap,
   Menu,
   X,
-  Phone
+  Phone,
+  Map
 } from 'lucide-react';
 
 import type { Currency } from '../types';
@@ -22,6 +23,7 @@ interface NavbarProps {
   onOpenAdmin: () => void;
   onOpenEstimator: () => void;
   onOpenExpressBrief: () => void;
+  onOpenSiteMap: () => void;
   adminWhatsappNumber: string;
 }
 
@@ -33,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAdmin,
   onOpenEstimator,
   onOpenExpressBrief,
+  onOpenSiteMap,
   adminWhatsappNumber,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -96,6 +99,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Search className="w-4 h-4 text-stone-400" />
               <span>Track Order</span>
+            </button>
+
+            <button
+              onClick={onOpenSiteMap}
+              className="hover:text-orange-400 text-stone-300 transition-colors flex items-center gap-1.5 cursor-pointer text-xs font-mono"
+              title="Site Map & 100+ SEO Keyword Directory"
+            >
+              <Map className="w-3.5 h-3.5 text-orange-400" />
+              <span>Site Map</span>
             </button>
 
             <button
@@ -243,6 +255,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Search className="w-4 h-4 text-stone-400" />
             <span>Track Existing Order</span>
+          </button>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenSiteMap();
+            }}
+            className="flex items-center gap-2 w-full text-left text-sm font-medium text-stone-300 py-2 hover:text-orange-400"
+          >
+            <Map className="w-4 h-4 text-orange-400" />
+            <span>Site Map &amp; SEO Directory</span>
           </button>
           <button
             onClick={() => {

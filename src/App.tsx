@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ServicesGrid } from './components/ServicesGrid';
@@ -10,10 +10,11 @@ import { OrderWizardModal } from './components/OrderWizardModal';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { OrderTrackerModal } from './components/OrderTrackerModal';
 import { AdminStudioModal } from './components/AdminStudioModal';
+import { SiteMapModal } from './components/SiteMapModal';
 import type { Currency, Order, ServiceId } from './types';
 import { getAdminSettings } from './utils/storage';
 import type { AdminSettings } from './utils/storage';
-import { MessageCircle, PlusCircle } from 'lucide-react';
+import { MessageCircle, PlusCircle, Map } from 'lucide-react';
 
 export function App() {
   const [currentCurrency, setCurrentCurrency] = useState<Currency>('USD');
@@ -27,24 +28,31 @@ export function App() {
   const [trackerOrderId, setTrackerOrderId] = useState<string>('');
 
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isSiteMapOpen, setIsSiteMapOpen] = useState(false);
 
-  useEffect(() => {
-    setAdminSettings(getAdminSettings());
+  const scrollToCalculator = useCallback(() => {
+    const el = document.getElementById('calculator');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
-  const handleOpenOrderWizard = (serviceId?: ServiceId) => {
+  const scrollToExpress = useCallback(() => {
+    const el = document.getElementById('express');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  const handleOpenOrderWizard = useCallback((serviceId?: ServiceId) => {
     if (serviceId) {
       setWizardServiceId(serviceId);
     }
     setIsOrderWizardOpen(true);
-  };
+  }, []);
 
-  const handleOpenTracker = (orderId?: string) => {
+  const handleOpenTracker = useCallback((orderId?: string) => {
     if (orderId) {
       setTrackerOrderId(orderId);
     }
     setIsTrackerOpen(true);
-  };
+  }, []);
 
   const handleOrderCompleted = (newOrder: Order) => {
     setIsOrderWizardOpen(false);
@@ -56,15 +64,33 @@ export function App() {
     setIsOrderWizardOpen(true);
   };
 
-  const scrollToCalculator = () => {
-    const el = document.getElementById('calculator');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    setAdminSettings(getAdminSettings());
 
-  const scrollToExpress = () => {
-    const el = document.getElementById('express');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+    const handleRoute = () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const view = searchParams.get('view');
+      const serviceParam = searchParams.get('service');
+      const trackParam = searchParams.get('track');
+      const hash = window.location.hash;
+
+      if (view === 'sitemap' || hash === '#sitemap') {
+        setIsSiteMapOpen(true);
+      } else if (view === 'tracker' || trackParam) {
+        handleOpenTracker(trackParam || undefined);
+      } else if (view === 'calculator' || hash === '#calculator') {
+        scrollToCalculator();
+      } else if (view === 'express' || hash === '#express') {
+        scrollToExpress();
+      } else if (serviceParam) {
+        handleOpenOrderWizard(serviceParam as ServiceId);
+      }
+    };
+
+    handleRoute();
+    window.addEventListener('hashchange', handleRoute);
+    return () => window.removeEventListener('hashchange', handleRoute);
+  }, [handleOpenOrderWizard, handleOpenTracker, scrollToCalculator, scrollToExpress]);
 
   const cleanWhatsapp = adminSettings.whatsappNumber.replace(/[^0-9]/g, '');
 
@@ -78,6 +104,7 @@ export function App() {
         onOpenAdmin={() => setIsAdminOpen(true)}
         onOpenEstimator={scrollToCalculator}
         onOpenExpressBrief={scrollToExpress}
+        onOpenSiteMap={() => setIsSiteMapOpen(true)}
         adminWhatsappNumber={adminSettings.whatsappNumber}
       />
 
@@ -116,6 +143,7 @@ export function App() {
         onOpenAdmin={() => setIsAdminOpen(true)}
         onOpenTracker={() => handleOpenTracker()}
         onOpenEstimator={scrollToCalculator}
+        onOpenSiteMap={() => setIsSiteMapOpen(true)}
         adminWhatsappNumber={adminSettings.whatsappNumber}
       />
 
@@ -152,7 +180,28 @@ export function App() {
         onSettingsUpdated={(newSettings) => setAdminSettings(newSettings)}
       />
 
+      <SiteMapModal
+        isOpen={isSiteMapOpen}
+        onClose={() => setIsSiteMapOpen(false)}
+        currentCurrency={currentCurrency}
+        onSelectService={(serviceId) => handleOpenOrderWizard(serviceId)}
+        onOpenEstimator={scrollToCalculator}
+        onOpenExpressBrief={scrollToExpress}
+        onOpenTracker={() => handleOpenTracker()}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+        adminWhatsappNumber={adminSettings.whatsappNumber}
+      />
+
       <div className="fixed bottom-6 right-6 z-40 flex items-center gap-2">
+        <button
+          onClick={() => setIsSiteMapOpen(true)}
+          className="p-3.5 rounded-full bg-stone-900/90 hover:bg-stone-850 border border-stone-700/80 text-orange-400 hover:text-orange-300 shadow-xl shadow-black/40 hover:scale-105 transition-all flex items-center justify-center cursor-pointer"
+          title="Open Studio Site Map & SEO Directory"
+          aria-label="Open Site Map"
+        >
+          <Map className="w-5 h-5" />
+        </button>
+
         <a
           href={`https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent('Hello Huzaifa! I am interested in placing an order with f0undr.')}`}
           target="_blank"

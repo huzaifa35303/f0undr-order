@@ -6,7 +6,7 @@
 
 ---
 
-## 🏛️ Supported Commission Domains (8 Disciplines)
+## 🏛️ Supported Commission Domains (8 Core Verticals)
 
 1. **Websites & Web Platforms**
    - High-converting landing pages, multi-tenant SaaS MVPs, editorial portfolios, e-commerce suites.
@@ -39,7 +39,35 @@
 
 8. **Autonomous AI & Neural Systems**
    - Private RAG pipelines grounded on confidential documentation, multi-agent swarms with tool execution, custom LLM fine-tuning, computer vision OCR, and conversational voice bots.
-   - Built with Gemini 2.5 / Claude 3.7 / OpenAI APIs, LangChain, Qdrant vector databases, and PyTorch.
+   - Built with Gemini 2.0 / Claude 3.5 Sonnet / OpenAI APIs, LangChain, Qdrant vector databases, and PyTorch.
+
+---
+
+## 🗺️ Studio Site Map & Omniroute Deep Linking
+
+The platform includes full sitemap support conforming to the official Sitemap 0.9 XML protocol, as well as an interactive visual client sitemap:
+
+- **Protocol XML Sitemap**: `public/sitemap.xml` with canonical URLs for all service domains, interactive calculators, order trackers, and express brief intakes.
+- **Interactive Visual Site Map Modal**: Accessible via the top Navigation Bar (`Site Map`), floating action pill, and Footer (`Interactive Studio Site Map`).
+- **Omniroute Deep Linking**:
+  - `/?view=sitemap` or `/#sitemap`: Opens the Interactive Site Map & Keyword Directory.
+  - `/?view=calculator` or `/#calculator`: Smoothly scrolls to the Interactive Cost Calculator.
+  - `/?view=express` or `/#express`: Jumps to the 60-Second Express Brief Intake.
+  - `/?view=tracker` or `/?track=ORDER_ID`: Opens the Live Order Tracker with the specified ID pre-filled.
+  - `/?service=websites` (or `apps`, `games`, `videos`, `images`, `ads`, `tools`, `ai`): Directly opens the Order Wizard pre-configured for that service department.
+
+---
+
+## 🔍 Search Engine Optimization (SEO) & 100+ Keyword Taxonomy
+
+- **100+ Targeted Commercial Keywords**: Embedded across `<meta name="keywords">`, the interactive SiteMap modal, and the semantic DOM directory footer.
+- **Rich JSON-LD Structured Data**:
+  - `ProfessionalService` & `Organization`
+  - `WebSite` with SearchAction
+  - `OfferCatalog` indexing all 8 service departments with exact deliverables
+  - `FAQPage` with Google Rich Snippets support
+- **Social Graph Optimization**: OpenGraph and Twitter Summary Large Image cards with 100% compliant metadata.
+- **Robots Directives**: `public/robots.txt` declaring full indexing access and referencing `https://f0undr-order.vercel.app/sitemap.xml`.
 
 ---
 
@@ -59,19 +87,12 @@ Live dynamic pricing converter with one-click toggling across global trade hubs:
 - **Dollars ($ USD)**: United States & Global Reserve
 - **Pounds (£ GBP)**: United Kingdom & Commonwealth
 - **PKR (₨ PKR)**: Pakistan Domestic Banking & Raast
+- **Euros (€ EUR)**: European Union & Single Euro Payments Area
 
 ### Supported Payment Infrastructure:
 - **Stripe**: Credit/Debit Cards, Apple Pay, Google Pay, Bank Transfers with TLS 1.3 encryption.
 - **PayPal**: Global Verified Buyer Protection Escrow & Business Invoicing.
-
----
-
-## 🔍 Google Search Console & SEO Ready
-
-- **XML Sitemap**: `public/sitemap.xml` indexed with all service domains and navigation anchors.
-- **Robots.txt**: `public/robots.txt` granting full crawl permissions and declaring the sitemap URL.
-- **Structured Data**: JSON-LD `ProfessionalService` schema markup in `index.html`.
-- **Search Verification**: Ready-made `<meta name="google-site-verification" content="..." />` tag in `index.html`.
+- **Direct Bank Wire / Raast (PKR)**: Instant 0% fee bank settlement within Pakistan.
 
 ---
 

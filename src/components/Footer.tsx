@@ -208,13 +208,13 @@ export const Footer: React.FC<FooterProps> = ({
           <p>© 2026 f0undr Atelier. Crafted with engineering rigor for founders &amp; enterprises.</p>
           <div className="flex items-center gap-3">
             <a
-              href="https://f0undr.vercel.app/"
+              href="https://www.f0undrteam.site/"
               target="_blank"
               rel="noreferrer"
-              className="text-orange-400 hover:underline flex items-center gap-1"
+              className="text-orange-400 hover:underline flex items-center gap-1 font-semibold"
             >
               <Sparkles className="w-3 h-3" />
-              <span>f0undr Official Headquarters</span>
+              <span>f0undr Main Site (f0undrteam.site)</span>
             </a>
             <span>•</span>
             <a href="/sitemap.xml" target="_blank" rel="noreferrer" className="text-stone-400 hover:text-white underline">

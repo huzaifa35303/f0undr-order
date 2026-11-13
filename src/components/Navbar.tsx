@@ -9,7 +9,8 @@ import {
   Menu,
   X,
   Phone,
-  Map
+  Map,
+  Globe
 } from 'lucide-react';
 
 import type { Currency } from '../types';
@@ -118,6 +119,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               <ShieldCheck className="w-3.5 h-3.5 text-stone-500" />
               <span>Studio Cockpit</span>
             </button>
+
+            <a
+              href="https://www.f0undrteam.site/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-orange-400 text-stone-400 transition-colors hidden lg:flex items-center gap-1 text-xs font-mono"
+              title="Official Main Website: f0undrteam.site"
+            >
+              <Globe className="w-3.5 h-3.5 text-orange-500/80" />
+              <span>Main Site</span>
+            </a>
           </nav>
 
           <div className="hidden sm:flex items-center gap-3">
@@ -276,6 +288,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             <ShieldCheck className="w-4 h-4 text-stone-500" />
             <span>Admin Studio Cockpit</span>
           </button>
+          <a
+            href="https://www.f0undrteam.site/"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-2 w-full text-left text-sm font-medium text-orange-400 py-2 hover:text-orange-300"
+          >
+            <Globe className="w-4 h-4 text-orange-500" />
+            <span>Main Website (f0undrteam.site)</span>
+          </a>
 
           <div className="pt-2 space-y-2">
             <a

@@ -372,10 +372,20 @@ export const SiteMapModal: React.FC<SiteMapModalProps> = ({
           </section>
         </div>
 
-        <div className="px-6 py-4 border-t border-stone-800 bg-stone-900/60 flex items-center justify-between">
-          <span className="text-xs font-mono text-stone-500">
-            f0undr Order Atelier Architecture v2.0 · Directed by M.Huzaifa
-          </span>
+        <div className="px-6 py-4 border-t border-stone-800 bg-stone-900/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-xs font-mono text-stone-500">
+            <span>f0undr Order Atelier Architecture v2.0</span>
+            <span>·</span>
+            <a 
+              href="https://www.f0undrteam.site/" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-orange-400 hover:underline flex items-center gap-1 font-semibold"
+            >
+              <span>Main Website: f0undrteam.site</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-white text-xs font-mono font-medium transition-colors cursor-pointer"

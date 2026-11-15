@@ -10,7 +10,7 @@ export interface SeoMetadata {
 
 export function getMetadataForRoute(view?: string | null, serviceId?: string | null, trackId?: string | null): SeoMetadata {
   const baseUrl = F0UNDR_STUDIO_CONFIG.siteUrl.replace(/\/$/, '');
-  const defaultOgImage = `${baseUrl}/icons.svg`;
+  const defaultOgImage = `${baseUrl}/favicon-512x512.png`;
 
   if (serviceId) {
     const srv = SERVICES_DATA.find((s) => s.id === serviceId);

@@ -11,7 +11,8 @@ import {
   MessageSquare,
   CreditCard,
   ExternalLink,
-  ShieldCheck
+  ShieldCheck,
+  AlertCircle
 } from 'lucide-react';
 
 import type { Order } from '../types';
@@ -71,12 +72,24 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
         </div>
 
         <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
-          Commission Order Received!
+          Commission Specification Generated!
         </h3>
         
-        <p className="text-sm text-stone-400 max-w-md mx-auto mb-5">
-          Your project specification is compiled. Now forward it directly to Huzaifa through one of the 3 official channels to lock in your slot.
+        <p className="text-sm text-stone-400 max-w-md mx-auto mb-4">
+          Your project specification and tracking ID have been compiled.
         </p>
+
+        <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs mb-5 flex items-start gap-2.5 text-left">
+          <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <span className="font-semibold text-white uppercase font-mono tracking-wider text-[11px] block">
+              Notice: Not Confirmed on Website
+            </span>
+            <span className="text-[11px] text-amber-200/90 leading-relaxed block">
+              We do <strong>NOT review or confirm orders on this website</strong>. Review, scope negotiation, and final slot confirmation is handled 1-on-1 directly with Huzaifa on <strong>Discord</strong>, <strong>WhatsApp</strong>, or <strong>Phone Call</strong>.
+            </span>
+          </div>
+        </div>
 
         <div className="p-4 rounded-2xl bg-stone-950 border border-stone-800 flex items-center justify-between gap-4 mb-6 text-left">
           <div>

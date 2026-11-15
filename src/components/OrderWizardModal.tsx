@@ -17,7 +17,8 @@ import {
   DollarSign,
   CreditCard,
   ShieldCheck,
-  Building2
+  Building2,
+  AlertCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import type { 
@@ -291,7 +292,7 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
             3. Scope
           </div>
           <div className={`py-2 px-1 border-b-2 ${currentStep >= 4 ? 'border-orange-500 text-orange-400 font-semibold' : 'border-transparent text-stone-500'}`}>
-            4. Review &amp; Send
+            4. Dispatch &amp; Connect
           </div>
         </div>
 
@@ -528,6 +529,18 @@ export const OrderWizardModal: React.FC<OrderWizardModalProps> = ({
           {currentStep === 4 && (
             <div className="space-y-6 animate-in fade-in duration-200">
               
+              <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <div className="font-semibold text-white text-xs uppercase tracking-wider font-mono">
+                    Direct Review Policy — No On-Site Review or Confirmation:
+                  </div>
+                  <p className="text-[11px] text-amber-200/90 leading-relaxed">
+                    Orders are <strong>NOT reviewed or confirmed here on this website</strong>. Submitting this form only generates your project specification sheet and unique tracking ID. All scope review, architecture evaluation, and binding confirmation is handled 1-on-1 directly with Huzaifa via <strong>Discord (<code className="text-white">king_huzaifa001</code>)</strong>, <strong>WhatsApp (<code className="text-white">+92 344 6789261</code>)</strong>, or a <strong>direct phone call</strong>.
+                  </p>
+                </div>
+              </div>
+
               <div className="p-4 rounded-2xl bg-stone-950 border border-stone-800 space-y-3">
                 <div className="flex items-center justify-between pb-3 border-b border-stone-800/80">
                   <div className="flex items-center gap-2">

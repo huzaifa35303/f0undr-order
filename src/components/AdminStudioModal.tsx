@@ -364,8 +364,8 @@ export const AdminStudioModal: React.FC<AdminStudioModalProps> = ({
                             onChange={(e) => handleStatusChange(e.target.value as OrderStatus)}
                             className="w-full px-3 py-1.5 rounded-lg bg-stone-950 border border-stone-800 text-stone-200 text-xs font-mono focus:outline-none focus:border-orange-500 cursor-pointer"
                           >
-                            <option value="submitted">Order Received</option>
-                            <option value="under_review">Under Review</option>
+                            <option value="submitted">Brief Received</option>
+                            <option value="under_review">Reviewing on Discord / WhatsApp / Call</option>
                             <option value="scope_approved">Scope Approved</option>
                             <option value="in_development">In Development</option>
                             <option value="qa_testing">QA & Testing</option>

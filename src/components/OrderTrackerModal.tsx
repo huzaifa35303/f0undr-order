@@ -189,6 +189,15 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                   </p>
                 </div>
 
+                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-200 text-xs">
+                  <span className="font-semibold text-white block mb-0.5 font-mono text-[11px] uppercase tracking-wider">
+                    Direct Review Policy:
+                  </span>
+                  <p className="text-[11px] text-blue-200/90 leading-relaxed">
+                    Orders are reviewed and confirmed strictly 1-on-1 via <strong>Discord (<code className="text-white">king_huzaifa001</code>)</strong>, <strong>WhatsApp (<code className="text-white">+92 344 6789261</code>)</strong>, or <strong>Phone Call</strong>. Submitting on the website does not constitute confirmation.
+                  </p>
+                </div>
+
                 <div className="space-y-1.5 pt-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-stone-400">Pipeline Progression</span>

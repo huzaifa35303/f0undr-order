@@ -10,7 +10,7 @@ export const F0UNDR_STUDIO_CONFIG = {
   phoneNumber: '03446789261',
   phoneInternational: '+923446789261',
   discordUsername: 'king_huzaifa001',
-  orderNotice: 'Orders are accepted exclusively via WhatsApp, Discord (king_huzaifa001), or Direct Call on 03446789261. No other way.',
+  orderNotice: 'Orders are NOT reviewed or confirmed on the website. All review, scope alignment, and final confirmation is conducted 1-on-1 strictly via WhatsApp (+92 344 6789261), Discord (king_huzaifa001), or Direct Phone Call (03446789261).',
 
   siteUrl: (import.meta as unknown as { env: { VITE_SITE_URL?: string } }).env?.VITE_SITE_URL || 'https://order.f0undrteam.site',
   mainWebsiteUrl: 'https://www.f0undrteam.site/',
@@ -79,8 +79,8 @@ export const SUPPORTED_CURRENCIES: CurrencyConfig[] = [
 ];
 
 export const STATUS_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  submitted: { label: 'Order Received', color: 'text-amber-400', bg: 'bg-amber-400/10 border-amber-400/30' },
-  under_review: { label: 'Under Review', color: 'text-blue-400', bg: 'bg-blue-400/10 border-blue-400/30' },
+  submitted: { label: 'Brief Received', color: 'text-amber-400', bg: 'bg-amber-400/10 border-amber-400/30' },
+  under_review: { label: 'Reviewing on Discord / WhatsApp / Call', color: 'text-blue-400', bg: 'bg-blue-400/10 border-blue-400/30' },
   scope_approved: { label: 'Scope Approved', color: 'text-emerald-400', bg: 'bg-emerald-400/10 border-emerald-400/30' },
   in_development: { label: 'In Development', color: 'text-orange-400', bg: 'bg-orange-400/10 border-orange-400/30' },
   qa_testing: { label: 'QA & Testing', color: 'text-purple-400', bg: 'bg-purple-400/10 border-purple-400/30' },
